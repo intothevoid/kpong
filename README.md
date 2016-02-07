@@ -4,7 +4,7 @@ Simple, Classic, Pong!
 
 Pong clone written in C++ and SDL. Currently a work in progress. Look at this space for updates
 
-![alt tag](img/sshot.png)
+![alt tag](kpong/img/sshot.png)
 
 ==================================================================================================
 
