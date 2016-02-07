@@ -10,6 +10,9 @@ int main(int argc, char* argv[])
 	// Init SDL and create our
 	engine.init();
 
+	// Add game world objects
+	engine.addgwos();
+
 	while (running)
 	{
 		engine.pollevent();
