@@ -1,10 +1,8 @@
 #include "sdlwrapper.h"
+#include "kpongdef.h"
 
 SDL_Window* screen;
 SDL_Event occur;
-
-#define SCREEN_WIDTH 800 
-#define SCREEN_HEIGHT 600
 
 SDLWrapper::SDLWrapper()
 {
