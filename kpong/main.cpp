@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	engine.init();
 
 	// Add game world objects
-	engine.addgwos();
+	engine.addGWOs();
 
 	while (running)
 	{

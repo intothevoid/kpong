@@ -14,11 +14,13 @@ public:
 	~PongEngine();
 
 	void init();
-	void addgwos();
+	void addGWOs();
 	void logic();
 	void drawscreen();
 	void quitgame();
 	void pollevent();
 	bool quitSDLEventFired();
+	void renderGWOs();
 };
+
 

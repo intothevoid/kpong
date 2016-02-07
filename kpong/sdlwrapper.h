@@ -11,6 +11,8 @@ public:
 	void pollevent();
 	void createwindow();
 	bool quitEventCheck();
+	void renderRect(int x, int y, int w, int h);
+	void clearScreen();
 	SDLWrapper();
 	~SDLWrapper();
 };
