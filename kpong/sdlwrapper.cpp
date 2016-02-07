@@ -29,7 +29,7 @@ void SDLWrapper::quitSDL()
 
 void SDLWrapper::createwindow()
 {
-	window = SDL_CreateWindow("KPong - Pong in black and white",
+	window = SDL_CreateWindow("KPong - Simple, Classic Pong",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		SCREEN_WIDTH,
