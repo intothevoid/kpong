@@ -13,14 +13,24 @@ int main(int argc, char* argv[])
 	// Add game world objects
 	engine.addGWOs();
 
+	// Lock our framerate at FPS frames per second
+	unsigned int lastTime = 0, currentTime = 0;
+
 	while (running)
 	{
-		engine.pollevent();
+		currentTime = engine.getTicks();
+
+		if (currentTime - lastTime > (1000 / FPS))
+		{
+			engine.pollevent();
+			engine.processKeys();
+			engine.logic();
+			engine.drawscreen();
+
+			lastTime = currentTime;
+		}
 
 		running = !engine.quitSDLEventFired(); // check if SDL quit event fired
-
-		engine.logic();
-		engine.drawscreen();
 	}
 
 	engine.quitgame();

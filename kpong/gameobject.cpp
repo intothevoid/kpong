@@ -8,6 +8,18 @@ GWO::~GWO()
 {
 }
 
+void GWO::setVel(int xVel, int yVel)
+{
+	xVel_ = xVel;
+	yVel_ = yVel;
+}
+
+void GWO::getVel(int& xVel, int& yVel)
+{
+	xVel = xVel_;
+	yVel = yVel_;
+}
+
 void GWO::setType(gwo_type type)
 {
 	type_ = type;

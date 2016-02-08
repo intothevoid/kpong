@@ -57,6 +57,7 @@ void SDLWrapper::renderRect(int x, int y, int w, int h)
 	rect.x = x;
 	rect.y = y;
 
+
 	// Set the render draw colour
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
@@ -65,7 +66,6 @@ void SDLWrapper::renderRect(int x, int y, int w, int h)
 
 	// Render
 	SDL_RenderPresent(renderer);
-
 }
 
 void SDLWrapper::clearScreen()
@@ -73,4 +73,25 @@ void SDLWrapper::clearScreen()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer);
+}
+
+char SDLWrapper::processKeys()
+{
+	SDL_KeyboardEvent* keybevent = NULL;
+
+	// Check keyboard events
+	if (occur.type == SDL_KEYDOWN)
+	{
+		keybevent = &occur.key;
+
+		if ((keybevent->keysym.sym < 0x80) && (keybevent->keysym.sym > 0))
+			return (char)keybevent->keysym.sym;
+	}
+
+	return 0;
+}
+
+unsigned int SDLWrapper::getTicks()
+{
+	return SDL_GetTicks();
 }

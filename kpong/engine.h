@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <map>
 #include "sdlwrapper.h"
 #include "gameobject.h"
 
@@ -8,7 +8,7 @@ class PongEngine
 {
 private:
 	SDLWrapper sdlwrap_;
-	std::vector<GWO> vecGWO_; // Vector containing game objects
+	std::map<gwo_type, GWO> mapGWO_; // Vector containing game objects
 public:
 	PongEngine();
 	~PongEngine();
@@ -21,6 +21,10 @@ public:
 	void pollevent();
 	bool quitSDLEventFired();
 	void renderGWOs();
+	void moveball();
+	void processKeys();
+	unsigned int getTicks();
+	void resetBall();
 };
 
 

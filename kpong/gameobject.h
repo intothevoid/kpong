@@ -6,6 +6,7 @@ class GWO
 {
 private:
 	int x_, y_, h_, w_;
+	int xVel_, yVel_;
 	gwo_type type_;
 public:
 	GWO();
@@ -16,5 +17,7 @@ public:
 	void getPos(int& x, int& y);
 	void setDimensions(int w, int h);
 	void getDimensions(int& w, int& h);
+	void setVel(int xVel, int yVel);
+	void getVel(int& xVel, int& yVel);
 };
 

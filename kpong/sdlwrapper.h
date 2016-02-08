@@ -13,6 +13,8 @@ public:
 	bool quitEventCheck();
 	void renderRect(int x, int y, int w, int h);
 	void clearScreen();
+	char processKeys();
+	unsigned int getTicks();
 	SDLWrapper();
 	~SDLWrapper();
 };
