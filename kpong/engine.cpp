@@ -147,6 +147,12 @@ void PongEngine::moveball()
 	x += xVel;
 	y += yVel;
 
+	if ((x < 1) || (x > SCREEN_WIDTH - (BALL_SIDE + PADDING)))
+	{
+		resetBall();
+		return;
+	}
+
 	// Adjust position of ball
 	mapGWO_[gwo_type::ball].setPos(x, y);
 }
