@@ -75,12 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="collisionmgr.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="gameobject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sdlwrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collisionmgr.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="kpongdef.h" />

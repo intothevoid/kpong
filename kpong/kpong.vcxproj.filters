@@ -27,6 +27,9 @@
     <ClCompile Include="gameobject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="collisionmgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kpongdef.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gameobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionmgr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

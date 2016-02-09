@@ -75,7 +75,7 @@ void SDLWrapper::clearScreen()
 	SDL_RenderPresent(renderer);
 }
 
-char SDLWrapper::processKeys()
+int SDLWrapper::processKeys()
 {
 	SDL_KeyboardEvent* keybevent = NULL;
 
@@ -84,8 +84,7 @@ char SDLWrapper::processKeys()
 	{
 		keybevent = &occur.key;
 
-		if ((keybevent->keysym.sym < 0x80) && (keybevent->keysym.sym > 0))
-			return (char)keybevent->keysym.sym;
+		return keybevent->keysym.scancode;
 	}
 
 	return 0;

@@ -3,6 +3,7 @@
 
 #include "engine.h"
 #include "kpongdef.h"
+#include "collisionmgr.h"
 
 PongEngine::PongEngine()
 {
@@ -28,17 +29,17 @@ void PongEngine::quitgame()
 void PongEngine::processKeys()
 {
 	// Get keyboard event
-	char ch = sdlwrap_.processKeys();
+	int key = sdlwrap_.processKeys();
 	int x = 0, y = 0;
 
-	if (0 != ch)
+	if (0 != key)
 	{
-		// Player move up
-		if ('w' == ch)
-		{
-			// Clear screen before redraw
-			sdlwrap_.clearScreen();
+		// Clear screen before redraw
+		sdlwrap_.clearScreen();
 
+		// Player move up
+		if (KEY_w == key)
+		{
 			mapGWO_[gwo_type::player].getPos(x, y);
 
 			if (PADDING < y)
@@ -46,16 +47,32 @@ void PongEngine::processKeys()
 		}
 
 		// Player move down
-		if ('s' == ch)
+		if (KEY_s == key)
 		{
-			// Clear screen before redraw
-			sdlwrap_.clearScreen();
-
 			mapGWO_[gwo_type::player].getPos(x, y);
 
 			if (SCREEN_HEIGHT > (y + PLAYER_HEIGHT + 20))
 				mapGWO_[gwo_type::player].setPos(x, y + MOVE_STEP * PADDLE_SPEED);
 		}
+		
+		// ai move up
+		if (KEY_UP == key)
+		{
+			mapGWO_[gwo_type::ai].getPos(x, y);
+
+			if (PADDING < y)
+				mapGWO_[gwo_type::ai].setPos(x, y - MOVE_STEP * PADDLE_SPEED);
+		}
+
+		// Player move down
+		if (KEY_DOWN == key)
+		{
+			mapGWO_[gwo_type::ai].getPos(x, y);
+
+			if (SCREEN_HEIGHT > (y + PLAYER_HEIGHT + 20))
+				mapGWO_[gwo_type::ai].setPos(x, y + MOVE_STEP * PADDLE_SPEED);
+		}
+
 	}
 }
 
@@ -126,6 +143,7 @@ void PongEngine::moveball()
 {
 	int xVel = 0, yVel = 0;
 	int x = 0, y = 0;
+	CollisionMgr collision;
 
 	// Clear screen
 	sdlwrap_.clearScreen();
@@ -143,6 +161,14 @@ void PongEngine::moveball()
 		mapGWO_[gwo_type::ball].setVel(xVel, yVel); // Update new y velocity
 	}
 
+	// Check if ball collides with paddles 
+	if (collision.checkCollision(mapGWO_[gwo_type::ball], mapGWO_[gwo_type::player]) ||
+		collision.checkCollision(mapGWO_[gwo_type::ball], mapGWO_[gwo_type::ai]))
+	{
+		xVel = -xVel;
+		mapGWO_[gwo_type::ball].setVel(xVel, yVel); 
+	}
+	
 	// Adjust velocity of ball
 	x += xVel;
 	y += yVel;
