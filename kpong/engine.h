@@ -20,7 +20,7 @@ public:
 	void quitgame();
 	void pollevent();
 	bool quitSDLEventFired();
-	void renderGWOs();
+	void drawGWOs();
 	void moveball();
 	void processKeys();
 	unsigned int getTicks();

@@ -16,7 +16,7 @@ SDLWrapper::~SDLWrapper()
 
 void SDLWrapper::initSDL()
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO); 
 	TTF_Init();
 
 }
@@ -34,9 +34,9 @@ void SDLWrapper::createwindow()
 		SDL_WINDOWPOS_UNDEFINED,
 		SCREEN_WIDTH,
 		SCREEN_HEIGHT,
-		SDL_SWSURFACE);
+		SDL_WINDOW_SHOWN);
 
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 void SDLWrapper::pollevent()
@@ -49,7 +49,7 @@ bool SDLWrapper::quitEventCheck()
 	return (occur.type == SDL_QUIT ? true : false);
 }
 
-void SDLWrapper::renderRect(int x, int y, int w, int h)
+void SDLWrapper::drawRect(int x, int y, int w, int h)
 {
 	SDL_Rect rect;
 	rect.h = h;
@@ -63,9 +63,6 @@ void SDLWrapper::renderRect(int x, int y, int w, int h)
 
 	// Draw our rectangle
 	SDL_RenderFillRect(renderer, &rect);
-
-	// Render
-	SDL_RenderPresent(renderer);
 }
 
 void SDLWrapper::clearScreen()
@@ -93,4 +90,10 @@ int SDLWrapper::processKeys()
 unsigned int SDLWrapper::getTicks()
 {
 	return SDL_GetTicks();
+}
+
+void SDLWrapper::renderScreen()
+{
+	// Render
+	SDL_RenderPresent(renderer);
 }

@@ -1,11 +1,16 @@
 #pragma once
 #include "sdlwrapper.h"
 #include "engine.h"
+#include "soundmgr.h"
 
 int main(int argc, char* argv[])
 {
 	PongEngine engine;
 	bool running = true;
+
+	// Play our intro pacman sound ;)
+	SoundMgr soundmgr;
+	soundmgr.playIntro();
 
 	// Init SDL and create our
 	engine.init();

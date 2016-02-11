@@ -11,9 +11,10 @@ public:
 	void pollevent();
 	void createwindow();
 	bool quitEventCheck();
-	void renderRect(int x, int y, int w, int h);
+	void drawRect(int x, int y, int w, int h);
 	void clearScreen();
 	int processKeys();
+	void renderScreen();
 	unsigned int getTicks();
 	SDLWrapper();
 	~SDLWrapper();

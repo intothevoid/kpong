@@ -84,7 +84,9 @@ void PongEngine::logic()
 
 void PongEngine::drawscreen()
 {
-	renderGWOs();
+	drawGWOs();
+
+	sdlwrap_.renderScreen();
 }
 
 void PongEngine::pollevent()
@@ -120,7 +122,7 @@ void PongEngine::addGWOs()
 	resetBall();
 }
 
-void PongEngine::renderGWOs()
+void PongEngine::drawGWOs()
 {
 	std::map<gwo_type, GWO>::iterator it = mapGWO_.begin();
 	
@@ -133,7 +135,7 @@ void PongEngine::renderGWOs()
 		gameobj.getDimensions(w, h);
 		gameobj.getPos(x, y);
 
-		sdlwrap_.renderRect(x, y, w, h);
+		sdlwrap_.drawRect(x, y, w, h);
 
 		it++;
 	}
